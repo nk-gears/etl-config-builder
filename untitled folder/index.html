@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Config Builder</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <style>
+    .content {
+      display: grid;ws -
+      grid-template-columns: 2em 5em;
+      font-size: 150%;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      class Scneario extends React.Component {
+        constructor(props) {
+          super(props);
+         }
+
+      }
+
+
+      class ConfigBuilder extends React.Component {
+         constructor(props) {
+          super(props);
+
+         }
+        state={selectedScenario:""};
+
+
+        showForm(){
+           // this.renderResourceForm();
+
+        }
+
+        navigate=(event,url)=>{
+            if(3>5)
+                location.href=url;
+            else
+                event.preventDefault();
+        }
+
+        renderResourceForm(){
+
+            const resourceForm= (
+                <div>
+                Select Resource Type
+                <select>
+                <option>FTP</option>
+                <option>Email</option>
+                </select>
+                </div>
+            )
+            return resourceForm;
+        }
+
+        render(){
+        const scenarios=["Resource","Etl-Source"];
+        const selectedScenario=this.state.selectedScenario;
+
+          return <div>
+                    <h2>Config Builder</h2>
+                    <hr/>
+                    Select Scenario :
+                    <select name="selscenario" onChange={(target)=>{
+
+                           // this.setState({selectedScenario:target["selscenario"].value});
+                    }}>
+                    <option>Choose the Scenario</option>
+                    {
+                       scenarios.map(scenario=>{
+                        return <option value={scenario}>{scenario}</option>
+                       })
+                    }
+                    </select>
+
+                   { /*} <a onClick={()=>this.navigate(event,"https://www.google.com")} >Go to  Google</a>*/}
+                    <button onClick={this.showForm} >Show Form</button>
+
+                    You have selected the scenario {selectedScenario}
+
+                 </div>
+        }
+      }
+
+      ReactDOM.render(
+        <ConfigBuilder/>,
+        document.getElementById('root')
+      );
+    </script>
+  </body>
+</html>
